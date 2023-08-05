@@ -1,5 +1,7 @@
 # Conway's Game of Life
 
+[![Go](https://github.com/claudemuller/life-go/actions/workflows/go.yml/badge.svg)](https://github.com/claudemuller/life-go/actions/workflows/go.yml)
+
 Conway's Game of Life written in Go with [raylib](https://github.com/raysan5/raylib).
 
 ![Game of Life](images/run.png)
