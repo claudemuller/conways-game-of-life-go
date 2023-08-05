@@ -145,7 +145,7 @@ func (g *Game) drawUI() {
 		rl.DrawText("<right-mouse> - kill cell", int32(10+padding), int32(s1*10+padding-6), int32(fontSize), rl.DarkBlue)
 
 		activeCell := g.getMouseOverCell()
-		if activeCell < 0 || activeCell > g.rows*g.cols {
+		if activeCell < 0 || activeCell >= g.rows*g.cols {
 			return
 		}
 
