@@ -2,6 +2,21 @@
 
 Conway's Game of Life written in Go with [raylib](https://github.com/raysan5/raylib).
 
+![Game of Life](images/run.png)
+
+# Simulation Interaction
+
+The simulation starts in `edit` mode:
+![start](images/start.png)
+
+One can use the:
+- `right-mouse` button to add cells
+- `left-mouse` button to remove cells
+- `s` key to to seed the Petri dish with random cells
+![seed dish](images/seed.png)
+- `enter` key to restart with a clean Petri dish
+- `q` key to quit
+
 # Build
 
 ```bash
