@@ -1,9 +1,6 @@
 package game
 
 import (
-	"math/rand"
-	"time"
-
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -34,12 +31,12 @@ func NewGame(cellSize, cols, rows int32) Game {
 
 func (g *Game) Init() {
 	// Random cell fill.
-	rand.Seed(time.Now().UnixNano())
-	for i := int32(0); i < g.rows*g.cols; i++ {
-		if rand.Intn(3) == 0 {
-			g.cells[i] = true
-		}
-	}
+	// rand.Seed(time.Now().UnixNano())
+	// for i := int32(0); i < g.rows*g.cols; i++ {
+	// 	if rand.Intn(3) == 0 {
+	// 		g.cells[i] = true
+	// 	}
+	// }
 }
 
 func (g *Game) Update() {
@@ -49,6 +46,12 @@ func (g *Game) Update() {
 		}
 
 		if !g.pause {
+			if rl.IsMouseButtonDown(rl.MouseLeftButton) {
+				x := rl.GetMouseX() / g.cellSize
+				y := rl.GetMouseY() / g.cellSize
+				i := x*g.cols + y
+				g.cells[i] = true
+			}
 		}
 	} else {
 		if rl.IsKeyPressed(rl.KeyEnter) {
