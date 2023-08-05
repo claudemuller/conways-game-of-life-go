@@ -10,14 +10,13 @@ func main() {
 	rows := int32(50)
 	cols := int32(50)
 
-	game := g.NewGame(cellSize, rows, cols)
-	game.Init()
+	game := g.NewGame(cellSize, rows, cols, 0.5)
 
 	rl.InitWindow(game.ScreenWidth, game.ScreenHeight, "Conway's Game of Life")
 
 	rl.SetTargetFPS(60)
 
-	for !rl.WindowShouldClose() {
+	for game.IsRunning && !rl.WindowShouldClose() {
 		game.Update()
 		game.Draw()
 	}
