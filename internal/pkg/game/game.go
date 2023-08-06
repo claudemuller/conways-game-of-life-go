@@ -87,11 +87,7 @@ func (g *Game) Update() {
 
 		for i := int32(0); i < g.rows*g.cols; i++ {
 			shouldLive, _ := g.shouldLive(i)
-			if shouldLive {
-				g.dishBuf[i] = true
-			} else {
-				g.dishBuf[i] = false
-			}
+			g.dishBuf[i] = shouldLive
 		}
 
 		copy(g.dish, g.dishBuf)
