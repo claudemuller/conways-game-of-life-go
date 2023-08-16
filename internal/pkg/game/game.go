@@ -157,36 +157,37 @@ func (g *Game) drawUI() {
 }
 
 func (g *Game) shouldLive(i int32) (bool, int) {
-	var left, topLeft, bottomLeft, right, topRight, bottomRight, top, bottom int
+	var neighbours int
 
-	if i-1 >= 0 {
-		left = btoi(g.dish[i-1])
-	}
-	if i+1 < g.rows*g.cols {
-		right = btoi(g.dish[i+1])
-	}
+	dishMin := int32(0)
+	dishMax := g.rows * g.cols
 
-	if i-g.cols >= 0 {
-		top = btoi(g.dish[i-g.cols])
+	if i-1 >= dishMin {
+		neighbours += btoi(g.dish[i-1])
 	}
-	if i-g.cols-1 >= 0 {
-		topLeft = btoi(g.dish[i-g.cols-1])
-	}
-	if i-g.cols+1 >= 0 {
-		topRight = btoi(g.dish[i-g.cols+1])
+	if i+1 < dishMax {
+		neighbours += btoi(g.dish[i+1])
 	}
 
-	if i+g.cols < g.rows*g.cols {
-		bottom = btoi(g.dish[i+g.cols])
+	if i-g.cols >= dishMin {
+		neighbours += btoi(g.dish[i-g.cols])
 	}
-	if i+g.cols-1 < g.rows*g.cols {
-		bottomLeft = btoi(g.dish[i+g.cols-1])
+	if i-1-g.cols >= dishMin {
+		neighbours += btoi(g.dish[i-1-g.cols])
 	}
-	if i+g.cols+1 < g.rows*g.cols {
-		bottomRight = btoi(g.dish[i+g.cols+1])
+	if i+1-g.cols >= dishMin {
+		neighbours += btoi(g.dish[i+1-g.cols])
 	}
 
-	neighbours := left + right + top + bottom + topLeft + topRight + bottomLeft + bottomRight
+	if i+g.cols < dishMax {
+		neighbours += btoi(g.dish[i+g.cols])
+	}
+	if i-1+g.cols < dishMax {
+		neighbours += btoi(g.dish[i-1+g.cols])
+	}
+	if i+1+g.cols < dishMax {
+		neighbours += btoi(g.dish[i+1+g.cols])
+	}
 
 	if !g.dish[i] {
 		return neighbours == 3, neighbours
