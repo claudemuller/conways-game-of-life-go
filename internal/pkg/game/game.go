@@ -162,29 +162,37 @@ func (g *Game) shouldLive(i int32) (bool, int) {
 	dishMin := int32(0)
 	dishMax := g.rows * g.cols
 
+	// Left
 	if i-1 >= dishMin {
 		neighbours += btoi(g.dish[i-1])
 	}
+	// Right
 	if i+1 < dishMax {
 		neighbours += btoi(g.dish[i+1])
 	}
 
+	// Top
 	if i-g.cols >= dishMin {
 		neighbours += btoi(g.dish[i-g.cols])
 	}
+	// Top left
 	if i-1-g.cols >= dishMin {
 		neighbours += btoi(g.dish[i-1-g.cols])
 	}
+	// Top right
 	if i+1-g.cols >= dishMin {
 		neighbours += btoi(g.dish[i+1-g.cols])
 	}
 
+	// Bottom
 	if i+g.cols < dishMax {
 		neighbours += btoi(g.dish[i+g.cols])
 	}
+	// Bottom left
 	if i-1+g.cols < dishMax {
 		neighbours += btoi(g.dish[i-1+g.cols])
 	}
+	// Bottom right
 	if i+1+g.cols < dishMax {
 		neighbours += btoi(g.dish[i+1+g.cols])
 	}
